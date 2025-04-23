@@ -1,22 +1,24 @@
 package InvestmentApp;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Login {
-    private static List<Account> accounts = new ArrayList<>();
+    private static final Map<String, String> adminAccounts = new HashMap<String, String>();
+    private static final Map<String, String> customerAccounts = new HashMap<String, String>();
 
     static {
-        accounts.add(new Account("admin", "admin123", "admin"));
-        accounts.add(new Account("customer", "cust123", "customer"));
+        adminAccounts.put("admin", "admin123");       // Username admin: admin, Password: admin123
+        customerAccounts.put("customer", "cust123");   // Username customer: customer, Password: cust123
     }
 
-    public static Account login(String username, String password) {
-        for (Account acc : accounts) {
-            if (acc.getUsername().equals(username) && acc.getPassword().equals(password)) {
-                return acc;
-            }
+    public static String login(String username, String password) {
+        if (adminAccounts.containsKey(username) && adminAccounts.get(username).equals(password)) {
+            return "admin";
         }
-        return null;
+        if (customerAccounts.containsKey(username) && customerAccounts.get(username).equals(password)) {
+            return "customer";
+        }
+        return "gagal";
     }
 }
