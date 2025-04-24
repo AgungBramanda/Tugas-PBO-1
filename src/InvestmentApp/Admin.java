@@ -22,7 +22,36 @@ public class Admin {
         while (running) {
             Clear.clearScreen();
             System.out.println("=== Menu Admin ===");
-            Menu.adminMenu();
+            System.out.println("1. Saham");
+            System.out.println("2. SBN");
+            System.out.println("3. Logout");
+            int pilihan = Input.nextInt("Pilih: ");
+
+            switch (pilihan) {
+                case 1:
+                    menuSaham();
+                    break;
+                case 2:
+                    menuSBN();
+                    break;
+                case 3:
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Pilihan tidak valid");
+            }
+        }
+    }
+
+    private void menuSaham() {
+        boolean running = true;
+        while (running) {
+            Clear.clearScreen();
+            System.out.println("=== Menu Saham ===");
+            System.out.println("1. Tambah Saham");
+            System.out.println("2. Ubah Harga Saham");
+            System.out.println("3. Lihat Daftar Saham");
+            System.out.println("4. Kembali");
             int pilihan = Input.nextInt("Pilih: ");
 
             switch (pilihan) {
@@ -33,15 +62,37 @@ public class Admin {
                     ubahHargaSaham();
                     break;
                 case 3:
-                    tambahSBN();
+                    View.showSahamList(sahamList);
+                    Input.waitForEnter();
                     break;
                 case 4:
-                    View.showSahamList(sahamList);
+                    running = false;
                     break;
-                case 5:
+                default:
+                    System.out.println("Pilihan tidak valid");
+            }
+        }
+    }
+
+    private void menuSBN() {
+        boolean running = true;
+        while (running) {
+            Clear.clearScreen();
+            System.out.println("=== Menu SBN ===");
+            System.out.println("1. Tambah SBN");
+            System.out.println("2. Lihat Daftar SBN");
+            System.out.println("3. Kembali");
+            int pilihan = Input.nextInt("Pilih: ");
+
+            switch (pilihan) {
+                case 1:
+                    tambahSBN();
+                    break;
+                case 2:
                     View.showSbnList(sbnList);
+                    Input.waitForEnter();
                     break;
-                case 6:
+                case 3:
                     running = false;
                     break;
                 default:
@@ -56,11 +107,9 @@ public class Admin {
         int harga = Input.nextInt("Harga: ");
         sahamList.add(new Saham(kode, nama, harga));
         System.out.println("Saham berhasil ditambahkan!");
-
-        // Menampilkan daftar saham terbaru
         System.out.println("\nDaftar Saham Terbaru:");
         View.showSahamList(sahamList);
-        Input.waitForEnter(); // Tunggu hingga admin menekan Enter
+        Input.waitForEnter();
     }
 
     private void ubahHargaSaham() {
@@ -72,10 +121,12 @@ public class Admin {
                 int hargaBaru = Input.nextInt("Harga baru: ");
                 s.setHarga(hargaBaru);
                 System.out.println("Harga saham berhasil diubah!");
+                Input.waitForEnter();
                 return;
             }
         }
         System.out.println("Saham tidak ditemukan!");
+        Input.waitForEnter();
     }
 
     private void tambahSBN() {
@@ -86,11 +137,9 @@ public class Admin {
         int kuota = Input.nextInt("Kuota Nasional: ");
         sbnList.add(new SuratBerhargaNegara(nama, bunga, jangka, jatuhTempo, kuota));
         System.out.println("SBN berhasil ditambahkan!");
-
-        // Menampilkan daftar SBN terbaru
         System.out.println("\nDaftar SBN Terbaru:");
         View.showSbnList(sbnList);
-        Input.waitForEnter(); // Tunggu hingga admin menekan Enter
+        Input.waitForEnter();
     }
 
     public static List<Saham> getSahamList() {
