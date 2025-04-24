@@ -1,4 +1,4 @@
-package InvestmentApp;
+package Utils;
 
 import java.util.Scanner;
 

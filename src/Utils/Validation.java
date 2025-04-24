@@ -1,4 +1,4 @@
-package InvestmentApp;
+package Utils;
 
 public class Validation {
     public static boolean isNumber(String input) {

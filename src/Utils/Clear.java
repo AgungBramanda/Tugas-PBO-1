@@ -1,4 +1,4 @@
-package InvestmentApp;
+package Utils;
 
 public class Clear {
     public static void clearScreen() {

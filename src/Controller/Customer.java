@@ -1,4 +1,9 @@
-package InvestmentApp;
+package Controller;
+
+import Menu.Menu;
+import Utils.Clear;
+import Utils.Input;
+import View.View;
 
 import java.util.HashMap;
 import java.util.Map;

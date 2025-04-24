@@ -1,4 +1,4 @@
-package InvestmentApp;
+package Model;
 
 public class Saham {
     private String kode;

@@ -1,4 +1,4 @@
-package InvestmentApp;
+package Menu;
 
 public class Menu {
 
