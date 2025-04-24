@@ -6,9 +6,12 @@ public class Main {
 
         while (running) {
             Clear.clearScreen();
-            System.out.println("=== Aplikasi Investasi ===");
-            System.out.println("1. Login");
-            System.out.println("2. Keluar");
+            System.out.println("+==================================+");
+            System.out.println("|      Aplikasi Investasi         |");
+            System.out.println("+==================================+");
+            System.out.println("| 1. Login                        |");
+            System.out.println("| 2. Keluar                       |");
+            System.out.println("+==================================+");
 
             int pilihan = Input.nextInt("Pilih menu: ");
 
@@ -19,6 +22,7 @@ public class Main {
                 case 2:
                     running = false;
                     System.out.println("Terima kasih telah menggunakan aplikasi investasi!");
+                    Input.pressEnter();
                     break;
                 default:
                     System.out.println("Pilihan tidak valid.");
@@ -28,10 +32,11 @@ public class Main {
     }
 
     private static void loginProcess() {
+        Clear.clearScreen();
         String username = Input.nextLine("Username: ");
         String password = Input.nextLine("Password: ");
 
-        String role = String.valueOf(Login.login(username, password));
+        String role = Login.login(username, password);
 
         if (role.equals("admin")) {
             Admin admin = new Admin();
@@ -40,7 +45,10 @@ public class Main {
             Customer customer = new Customer();
             customer.menu();
         } else {
-            System.out.println("Login gagal! Username atau password salah.");
+            System.out.println("+==================================+");
+            System.out.println("|  Login gagal!                  |");
+            System.out.println("|  Username atau password salah. |");
+            System.out.println("+==================================+");
             Input.pressEnter();
         }
     }

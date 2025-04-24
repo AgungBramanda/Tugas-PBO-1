@@ -36,6 +36,12 @@ public class Admin {
                     tambahSBN();
                     break;
                 case 4:
+                    View.showSahamList(sahamList);
+                    break;
+                case 5:
+                    View.showSbnList(sbnList);
+                    break;
+                case 6:
                     running = false;
                     break;
                 default:
@@ -50,6 +56,11 @@ public class Admin {
         int harga = Input.nextInt("Harga: ");
         sahamList.add(new Saham(kode, nama, harga));
         System.out.println("Saham berhasil ditambahkan!");
+
+        // Menampilkan daftar saham terbaru
+        System.out.println("\nDaftar Saham Terbaru:");
+        View.showSahamList(sahamList);
+        Input.waitForEnter(); // Tunggu hingga admin menekan Enter
     }
 
     private void ubahHargaSaham() {
@@ -75,6 +86,11 @@ public class Admin {
         int kuota = Input.nextInt("Kuota Nasional: ");
         sbnList.add(new SuratBerhargaNegara(nama, bunga, jangka, jatuhTempo, kuota));
         System.out.println("SBN berhasil ditambahkan!");
+
+        // Menampilkan daftar SBN terbaru
+        System.out.println("\nDaftar SBN Terbaru:");
+        View.showSbnList(sbnList);
+        Input.waitForEnter(); // Tunggu hingga admin menekan Enter
     }
 
     public static List<Saham> getSahamList() {

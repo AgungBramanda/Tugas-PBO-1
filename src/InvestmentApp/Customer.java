@@ -32,6 +32,12 @@ public class Customer {
                     View.showPortofolio(sahamCustomer, sbnCustomer);
                     break;
                 case 6:
+                    View.showSahamList(Admin.getSahamList());
+                    break;
+                case 7:
+                    View.showSbnList(Admin.getSbnList());
+                    break;
+                case 8:
                     running = false;
                     break;
                 default:

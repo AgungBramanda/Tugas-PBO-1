@@ -37,4 +37,21 @@ public class View {
             }
         }
     }
+
+    public static void showSbnList(List<SuratBerhargaNegara> sbnList) {
+        System.out.println("=== Daftar Surat Berharga Negara ===");
+        System.out.printf("%-10s %-20s %-10s %-15s %-15s%n",
+                "Nama", "Bunga (%)", "Jangka (tahun)", "Jatuh Tempo", "Kuota Nasional");
+        System.out.println("-------------------------------------------------------------");
+
+        for (SuratBerhargaNegara sbn : sbnList) {
+            System.out.printf("%-10s %-20.2f %-10d %-15s %-15d%n",
+                    sbn.getNama(),
+                    sbn.getBunga(),
+                    sbn.getJangkaWaktu(),
+                    sbn.getTanggalJatuhTempo(),
+                    sbn.getKuotaNasional());
+        }
+        System.out.println("-------------------------------------------------------------");
+    }
 }

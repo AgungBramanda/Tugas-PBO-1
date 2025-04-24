@@ -22,4 +22,9 @@ public class Input {
     public static void pressEnter() {
 
     }
+
+    public static void waitForEnter() {
+        System.out.println("Tekan Enter untuk melanjutkan...");
+        new java.util.Scanner(System.in).nextLine();
+    }
 }
